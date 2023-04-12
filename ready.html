@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="refresh" content="15;url=level1.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ready?</title>
+    <style>
+    div {
+        text-align: center;
+    }
+    
+    img {
+        height: 500px;
+        width: auto;
+    }
+    
+    h1 {
+        margin-top: 5%;
+        text-align:center;
+		font-family: 'Helvetica', sans-serif;
+    }
+    
+    </style>
+</head>
+<body>
+    <div><img src="eyes-closed.png"></div>
+    
+    <h1>Put the card into the slot! It's time to recreate!</h1>
+
+
+	<script>
+		// Get the value of the 'option' parameter from the URL
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const option = urlParams.get('option');
+		
+		// Redirect to the appropriate page based on the 'option' value
+		switch(option) {
+			case '1':
+				window.setTimeout(function(){
+				    location.href='level1.html';
+				}, 15000);
+				break;
+			case '2':
+				window.setTimeout(function(){
+				    location.href='level2.html';
+				}, 15000);
+				break;
+			case '3':
+				window.setTimeout(function(){
+				    location.href='level3.html';
+				}, 15000);
+				break;
+            case '4':
+				window.setTimeout(function(){
+				    location.href='level4.html';
+				}, 15000);
+				break;
+            case '5':
+				window.setTimeout(function(){
+				    location.href='level3.html';
+				}, 15000);
+				break;
+			// Redirect to a default page if the 'option' value is invalid
+            window.setTimeout(function(){
+				    location.href='MenuScreen.html';
+				}, 15000);
+				break;
+		}
+</script>
+</body>
+</html>

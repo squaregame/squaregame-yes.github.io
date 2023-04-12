@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<button id="refreshButton" style="display:none; position:fixed; top:90%; left:50%; transform:translate(-50%,-50%); width:8em; height:3.4em; font-size:1.5em; color:white; background-color:red; border:4px solid rgb(255, 255, 255); border-radius:15px; padding:0;" onclick="location.reload()">Restart</button>
+
+<button id="nextLevel" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:8em; height:3.4em; font-size:1.5em; color:white; background-color:rgb(0, 110, 42); border:4px solid rgb(255, 255, 255); border-radius:15px; padding:0;" onclick="window.location.href='MenuScreen.html'">Main Menu</button>
+
+<html>
+<head>
+  <title>Card 4</title>
+  <style>
+    body {
+      margin-top: 5%;
+      font-family: 'Helvetica', sans-serif;
+            text-align: center;
+    }
+
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap: 5px;
+      margin: 0 auto;
+      width: 500px;
+      height: 500px;
+      background-color: rgb(48, 48, 48);
+      padding: 5px;
+    }
+
+    .tile {
+      background-color: white;
+      border: 1px solid black;
+    }
+
+    .tile.clicked {
+      background-color: #40c41c;
+    }
+
+    #result {
+      text-align: center;
+      font-size: 32px;
+      color: white;
+    }
+
+    #gameover {
+      background-color: red;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Helvetica', sans-serif;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="grid"></div>
+  <div id="result"></div>
+  <h1 id="instruct">Recreate the pattern!</h1>
+  <script>
+    const hiddenPattern = [
+      [1, 0, 1, 0, 0],
+      [0, 0, 1, 0, 1],
+      [0, 0, 1, 0, 0],
+      [0, 1, 0, 1, 0],
+      [1, 0, 1, 0, 1]
+    ];
+    const clickedPattern = [
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0]
+    ];
+    let attempts = 0;
+    const maxAttempts = 7;
+
+    const grid = document.getElementById("grid");
+    const result = document.getElementById("result");
+
+    // create the game grid
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        const tile = document.createElement("div");
+        tile.className = "tile";
+        grid.appendChild(tile);
+        tile.addEventListener("click", () => {
+          if (attempts < maxAttempts) {
+            const colorIndex = hiddenPattern[i][j];
+            if (colorIndex === 0) {
+              tile.style.backgroundColor = "grey";
+            } else {
+              tile.classList.add("clicked");
+            }
+            clickedPattern[i][j] = 1;
+            if (checkPattern()) {
+              bazingah("You win!");
+            } else if (colorIndex !== 1) {
+              attempts++;
+              if (attempts === maxAttempts) {
+                gameOver();
+              }
+            }
+          }
+        });
+      }
+    }
+
+    function checkPattern() {
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          if (hiddenPattern[i][j] === 1 && clickedPattern[i][j] !== 1) {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    function gameOver() {
+      grid.style.display = "none";
+      result.textContent = "Game Over";
+      result.parentElement.style.backgroundColor = "red";
+      document.getElementById("nextLevel").style.display = "block";
+      document.getElementById("refreshButton").style.display = "block";
+      document.getElementById("instruct").style.display="none";
+
+    }
+
+    function bazingah(message) {
+      grid.style.display = "none";
+      result.textContent = message;
+      result.parentElement.style.backgroundColor = "green";
+      document.getElementById("nextLevel").style.display = "block";
+      document.getElementById("refreshButton").style.display = "none";
+      document.getElementById("instruct").style.display="none";
+
+      var audio = new Audio("Yay-sfx.mp3");
+      audio.volume = 0.75;
+      audio.play();
+    }
+    
+  </script>
+</body>
+</html>

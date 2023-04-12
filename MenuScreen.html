@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Menu Screen</title>
+
+</head>
+<style>
+	  body {
+            font-family: 'Helvetica', sans-serif;
+			text-align: center;
+	  }
+        h1 {
+        font-size: 3em;
+       
+    }
+
+	button {
+        background-color: #007BFF;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    button:hover {
+        background-color: #40c41c;
+    }
+
+</style>
+<body onmousemove="handleMouseMove(event)">
+<div class="content" id="content">
+
+    <h1>Choose your card number <button onclick="location.href='intro-page.html'">?</button></h1>
+
+    <div class="buttons">
+    <button class="button-30" onclick="window.location.href='loading.html?option=1'" role="button">1</button>
+    <button class="button-30" onclick="window.location.href='loading.html?option=2'" role="button">2</button>
+    <button class="button-30" onclick="window.location.href='loading.html?option=3'" role="button">3</button>
+    <button class="button-30" onclick="window.location.href='loading.html?option=4'" role="button">4</button>
+    <button class="button-30" onclick="window.location.href='loading.html?option=5'" role="button">5</button>
+    </div>
+</div>
+
+<script>
+    let timeoutId;
+		function handleMouseMove(event) {
+			// Get the position of the mouse pointer
+			const x = event.clientX;
+			const y = event.clientY;
+			
+			// Reset the timeout when the mouse is moved
+			clearTimeout(timeoutId);
+			timeoutId = setTimeout(redirectToNewPage, 10000); // Wait for 10s of inactivity
+		}
+		
+		function redirectToNewPage() {
+			// Redirect to the new page after 1 minute of inactivity
+			window.location.href = 'inactive.html';
+		}
+		
+		// Start the timer when the page loads
+		window.onload = function() {
+			timeoutId = setTimeout(redirectToNewPage, 10000); // Wait for 10 secs of inactivity
+		};
+	</script>
+
+<body>
+
+</body>
+</html>
