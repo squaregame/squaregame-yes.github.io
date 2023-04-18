@@ -42,8 +42,8 @@ button {
     transition: background-color 0.2s;
 }
 
-button:hover {
-    background-color: grey;
+.index-redirect {
+    background-color: #40c41c;
 }
 
 @media only screen and (max-device-width: 480px) {
@@ -64,7 +64,7 @@ button:hover {
 <body onmousemove="handleMouseMove(event)">
 <div class="content" id="content">
 
-    <h1>ROLL THE DIE<button onclick="location.href='index.html'">?</button></h1>
+    <h1>ROLL THE DIE<button class="index-redirect" onclick="location.href='index.html'">?</button></h1>
 
     <div class="buttons">
     <button class="button-30" onclick="window.location.href='loading.html?option=1'" role="button">1</button>
