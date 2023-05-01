@@ -123,6 +123,10 @@
       document.getElementById("refreshButton").style.display = "block";
       document.getElementById("instruct").style.display="none";
 
+      var audio = new Audio("fail-sfx.mp3");
+      audio.volume = 0.45;
+      audio.play();
+
     }
 
     function bazingah(message) {

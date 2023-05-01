@@ -6,7 +6,7 @@
 
 <html>
 <head>
-  <title>Card 2</title>
+  <title>2</title>
   <style>
     body {
       margin-top: 5%;
@@ -131,6 +131,10 @@
       document.getElementById("nextLevel").style.display = "block";
       document.getElementById("refreshButton").style.display = "block";
       document.getElementById("instruct").style.display="none";
+
+      var audio = new Audio("fail-sfx.mp3");
+      audio.volume = 0.45;
+      audio.play();
 
     }
 
