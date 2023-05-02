@@ -119,6 +119,12 @@ button {
 </div>
 
 <script>
+
+const audio1 = new Audio("quirky.mp3");
+    window.addEventListener('load', function() {
+    audio1.volume = 0.75;
+    audio1.play();
+  });
     /*let timeoutId;
 		function handleMouseMove(event) {
 			// Get the position of the mouse pointer
