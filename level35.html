@@ -9,6 +9,7 @@
 <html>
 <head>
   <title>35</title>
+  <!---
   <style>
 /*
      #nextLevel {
@@ -75,21 +76,26 @@
       font-family: 'Helvetica', sans-serif;
     }
 
-  </style>
+  </style>-->
 </head>
 <body>
   <div id="grid"></div>
   <div id="result"></div>
   <h1 id="instruct">Recreate the pattern</h1>
   <script>
-const hiddenPattern = [
+    const audio1 = new Audio("quirky.mp3");
+    window.addEventListener('load', function() {
+    audio1.volume = 0.75;
+    audio1.play();
+  });
+
+  const hiddenPattern = [
       [1, 0, 1, 0, 1],
       [0, 1, 1, 1, 0],
       [0, 1, 1, 1, 0],
       [0, 1, 1, 1, 0],
       [1, 0, 1, 0, 1]
     ];
-
     const clickedPattern = [
       [0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0],
@@ -98,7 +104,7 @@ const hiddenPattern = [
       [0, 0, 0, 0, 0]
     ];
     let attempts = 0;
-    const maxAttempts = 7;
+    const maxAttempts = 2;
 
     const grid = document.getElementById("grid");
     const result = document.getElementById("result");
@@ -145,7 +151,7 @@ const hiddenPattern = [
     function gameOver() {
       grid.style.display = "none";
       result.textContent = "Game Over";
-      result.parentElement.style.backgroundColor = "red";
+      result.parentElement.style.backgroundColor = "#AE0101";
       document.getElementById("nextLevel").style.display = "block";
       document.getElementById("refreshButton").style.display = "block";
       document.getElementById("instruct").style.display="none";
@@ -153,6 +159,7 @@ const hiddenPattern = [
       var audio = new Audio("fail-sfx.mp3");
       audio.volume = 0.45;
       audio.play();
+      audio1.pause();
 
     }
 
@@ -167,6 +174,7 @@ const hiddenPattern = [
       var audio = new Audio("Yay-sfx.mp3");
       audio.volume = 0.75;
       audio.play();
+      audio1.pause();
     }
     
   </script>
