@@ -47,15 +47,15 @@ h1 {
 }
 
 button {
-    font-size: 14px;
+    font-size: 16px;
     padding: 10px 20px;
     margin: 5px;
-    background-color: #007BFF;
-    color: #FFFFFF;
+    background-color: white;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s;  
 }
 
 .button-rows {
@@ -64,8 +64,16 @@ button {
     margin: 0 auto;
 }
 
+.index-redirect {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+}
 .index-redirect:hover {
-    background-color: #40c41c;
+    background-color: rgb(43, 43, 43);
+    color: white;
+    
+    transition: transform .4s;
+    -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 @media only screen and (max-device-width: 480px) {
