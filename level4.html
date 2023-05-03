@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 
-<button id="refreshButton" style="display:none; position:fixed; top:90%; left:50%; transform:translate(-50%,-50%); width:8em; height:3.4em; font-size:1.5em; color:white; background-color:red; border:4px solid rgb(255, 255, 255); border-radius:15px; padding:0;" onclick="location.reload()">Restart</button>
+<button id="refreshButton"  onclick="location.reload()">Restart</button>
 
-<button id="nextLevel" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); width:8em; height:3.4em; font-size:1.5em; color:white; background-color:rgb(0, 110, 42); border:4px solid rgb(255, 255, 255); border-radius:15px; padding:0;" onclick="window.location.href='MenuScreen.html'">Main Menu</button>
+<button id="nextLevel" onclick="window.location.href='MenuScreen.html'">Main Menu</button>
+
+<link rel="stylesheet" href="hover-styles.css">
 
 <html>
 <head>
   <title>4</title>
   <style>
+/*
+     #nextLevel {
+      display:none; position:fixed; 
+      top:50%; left:50%; 
+      transform:translate(-50%,-50%); 
+      width:8em; height:3.4em; 
+      font-size:1.5em; color:white; 
+      background-color:rgb(0, 110, 42); 
+      border:4px solid rgb(255, 255, 255); 
+      border-radius:15px; 
+      padding:0;
+    }
+    #nextLevel:hover {
+  background-color: #21d609d4;
+  }
+
+  #refreshButton {display:none; position:fixed; top:90%; left:50%; transform:translate(-50%,-50%); width:8em; height:3.4em; font-size:1.5em; color:white; background-color:red; border:4px solid rgb(255, 255, 255); border-radius:15px; padding:0;
+  }
+
+  #refreshButton:hover {
+  background-color: #930308d4;
+  }
+*/
+
     body {
       margin-top: 5%;
-      font-family: 'Helvetica', sans-serif;
-            text-align: center;
     }
-
     #grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -25,6 +48,7 @@
       background-color: rgb(48, 48, 48);
       padding: 5px;
     }
+    
 
     .tile {
       background-color: white;
@@ -58,7 +82,13 @@
   <div id="result"></div>
   <h1 id="instruct">Recreate the pattern</h1>
   <script>
-    const hiddenPattern = [
+    const audio1 = new Audio("quirky.mp3");
+    window.addEventListener('load', function() {
+    audio1.volume = 0.75;
+    audio1.play();
+  });
+
+  const hiddenPattern = [
       [1, 0, 1, 0, 0],
       [0, 0, 1, 0, 1],
       [0, 0, 1, 0, 0],
@@ -73,7 +103,7 @@
       [0, 0, 0, 0, 0]
     ];
     let attempts = 0;
-    const maxAttempts = 7;
+    const maxAttempts = 2;
 
     const grid = document.getElementById("grid");
     const result = document.getElementById("result");
@@ -120,7 +150,7 @@
     function gameOver() {
       grid.style.display = "none";
       result.textContent = "Game Over";
-      result.parentElement.style.backgroundColor = "red";
+      result.parentElement.style.backgroundColor = "#AE0101";
       document.getElementById("nextLevel").style.display = "block";
       document.getElementById("refreshButton").style.display = "block";
       document.getElementById("instruct").style.display="none";
@@ -128,6 +158,7 @@
       var audio = new Audio("fail-sfx.mp3");
       audio.volume = 0.45;
       audio.play();
+      audio1.pause();
 
     }
 
@@ -142,6 +173,7 @@
       var audio = new Audio("Yay-sfx.mp3");
       audio.volume = 0.75;
       audio.play();
+      audio1.pause();
     }
     
   </script>
