@@ -33,7 +33,7 @@
         text-align: center;
     }
 
-    button {
+    #menu {
         font-size: 1.2em;
         padding: 0.5em 1em;
         background: linear-gradient(-45deg, #ffeb3b, #74efff, #9c27b0);
@@ -58,12 +58,84 @@
 	}
 }
 
-    button:hover {
+    #menu:hover {
         transform: translateY(2px);
   -webkit-transform: rotate(20deg);
   transform: rotate(20deg);
   transition: transform .2s;
     }
+
+   /* #open-modal-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+#open-modal-btn:hover {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: -10px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}*/
+
+.hover-text {
+    position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: 'Helvetica', sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+}
+
+.hover-text:hover:before {
+  content: "Made by 2nd year Interaction Design students: Yinglin Chen, Mitra Mahmoudzadeh, Lee Mendoza, Alexandre Woolery";
+}
+
+.hover-text:before {
+  content: "Hover for more";
+}
+
+
+
 </style>
 
 </style>
@@ -77,6 +149,43 @@
         <li>3. Memorize the pattern you rolled</li>
         <li>4. Recreate the pattern on the grid</li>
     </ul>
-    <button onclick="location.href='MenuScreen.html'">Start Game</button>
+    <button id="menu" onclick="location.href='MenuScreen.html'">Start Game</button>
+    <p class="hover-text"></p>
+    
+    
+    <!--<button id="open-modal-btn">Open Modal</button>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+          <span class="close-btn" id="close-modal-btn">&times;</span>
+          <h2>Modal Title</h2>
+          <p>Modal content goes here</p>
+        </div>-->
+
+      </div>
+
+
+
+<!--<script>
+    // Get the modal element
+const modal = document.getElementById('modal');
+
+// Get the button that opens the modal
+const openModalBtn = document.getElementById('open-modal-btn');
+
+// Get the button that closes the modal
+const closeModalBtn = document.getElementById('close-modal-btn');
+
+// When the user clicks on the open button, show the modal
+openModalBtn.addEventListener('click', () => {
+  modal.style.display = 'block';
+});
+
+// When the user clicks on the close button, hide the modal
+closeModalBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+</script>-->
+
 </body>
 </html>
