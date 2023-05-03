@@ -21,3 +21,62 @@ cursor: pointer;
 background-color: red;
 cursor: pointer;
 }
+
+
+body {
+  margin-top: 5%;
+}
+#grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 5px;
+  margin: 0 auto;
+  width: 500px;
+  height: 500px;
+  background-color: rgb(48, 48, 48);
+  background: linear-gradient(-45deg, #ffeb3b, #74efff, #9c27b0);
+background-size: 400% 400%;
+animation: gradient-bg 20s ease infinite;
+  padding: 5px;
+}
+
+
+.tile {
+  background-color: linear-gradient(-45deg, #ffeb3b, #74efff, #9c27b0);
+background-size: 400% 400%;
+animation: gradient-bg 20s ease infinite;
+/*border: 1px solid black;*/
+}
+
+@keyframes gradient-bg {
+0% {
+background-position: 0% 50%;
+}
+50% {
+background-position: 100% 50%;
+}
+100% {
+background-position: 0% 50%;
+}
+}
+
+.tile.clicked {
+  background-color: black;
+}
+
+#result {
+  text-align: center;
+  font-size: 32px;
+  color: white;
+  font-family: 'Helvetica', sans-serif;
+}
+
+#gameover {
+  background-color: red;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Helvetica', sans-serif;
+}
