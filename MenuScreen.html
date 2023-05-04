@@ -15,6 +15,7 @@
     background: linear-gradient(-45deg, #ffeb3b, #74efff, #9c27b0);
     background-size: 400% 400%;
     animation: gradient-bg 20s ease infinite;
+    overflow:hidden;
 }
 
 @keyframes gradient-bg {
@@ -33,8 +34,17 @@
 h1 {
     font-size: 3em;
     display: flex;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     justify-content: center;
+
+    position: relative;
+  animation: myfirst linear 3s infinite alternate;
+  white-space: nowrap;
+}
+
+@keyframes myfirst {
+  0%   {left: -150px; top:0px;}
+  100% {left:150px; top:0px;}
 }
 
 .button-container {
@@ -50,8 +60,8 @@ button {
     font-size: 16px;
     padding: 10px 20px;
     margin: 5px;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -66,14 +76,28 @@ button {
 
 .index-redirect {
     box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
+
+.jumping {
+    animation: jump-animation 1s ease-in-out;
+}
+
+@keyframes jump-animation {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
 .index-redirect:hover {
     background-color: rgb(43, 43, 43);
     color: white;
     
     transition: transform .4s;
-    -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-25deg);
+  transform: rotate(-25deg);
 }
 
 @media only screen and (max-device-width: 480px) {
@@ -94,7 +118,7 @@ button {
 <!--<body onmousemove="handleMouseMove(event)"> -->
 <div class="content" id="content">
 
-    <h1>ROLL THE DIE&nbsp;<button class="index-redirect" onclick="location.href='index.html'">?</button></h1>
+    <h1>What pattern did you roll?</h1>
 
     <div class="button-rows">
     <button class="button-30" onclick="window.location.href='loading.html?option=1'" role="button">01</button>
@@ -139,6 +163,7 @@ button {
         <button class="button-30" onclick="window.location.href='loading.html?option=34'" role="button">34</button>
         <button class="button-30" onclick="window.location.href='loading.html?option=35'" role="button">35</button>
     </div>
+    <button id="index-jump" class="index-redirect" onclick="location.href='index.html'">How to Play</button>
 
 </div>
 
@@ -150,6 +175,14 @@ const audio1 = new Audio("quirky.mp3");
     audio1.loop = true;
     audio1.play();
   });
+
+
+const jumpingBtn = document.getElementById("index-jump");
+
+setInterval(() => {
+  jumpingBtn.classList.toggle("jumping");
+}, 5000);
+
     /*let timeoutId;
 		function handleMouseMove(event) {
 			// Get the position of the mouse pointer
