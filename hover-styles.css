@@ -25,6 +25,7 @@ cursor: pointer;
 
 body {
   margin-top: 5%;
+  overflow: hidden;
 }
 #grid {
   display: grid;
@@ -39,14 +40,33 @@ body {
 background-size: 400% 400%;
 animation: gradient-bg 20s ease infinite;
   padding: 5px;
+  animation: rotatingtime 30s infinite linear;
 }
+
+@keyframes rotatingtime {
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(359deg)
+}
+}
+
 
 
 .tile {
   background-color: linear-gradient(-45deg, #ffeb3b, #74efff, #9c27b0);
 background-size: 400% 400%;
 animation: gradient-bg 20s ease infinite;
-/*border: 1px solid black;*/
+
+}
+
+.tile:hover {
+  transition: transform .4s;
+  -webkit-transform: rotate(25deg);
+transform: rotate(25deg);
+cursor: pointer;
+border:1px solid black;
 }
 
 @keyframes gradient-bg {
@@ -79,4 +99,18 @@ background-position: 0% 50%;
 h1 {
   text-align: center;
   font-family: 'Helvetica', sans-serif;
+  position: relative;
+  
+  animation: rotatingtime 30s infinite linear;
+
+}
+
+@keyframes aroundscreen {
+  0%   {left: -150px; top:0px;}
+  100% {left:150px; top:0px;}
+}
+
+h1:hover {
+color: white;
+cursor: default;
 }
