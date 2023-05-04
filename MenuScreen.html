@@ -36,6 +36,7 @@ h1 {
     display: flex;
     /*flex-wrap: wrap;*/
     justify-content: center;
+    color: black;
 
     position: relative;
   animation: myfirst linear 3s infinite alternate;
@@ -81,7 +82,7 @@ button {
   right: 20px;
 }
 
-.jumping {
+/*.jumping {
     animation: jump-animation 1s ease-in-out;
 }
 
@@ -89,7 +90,7 @@ button {
   0% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
   100% { transform: translateY(0); }
-}
+}*/
 
 .index-redirect:hover {
     background-color: rgb(43, 43, 43);
@@ -177,11 +178,11 @@ const audio1 = new Audio("quirky.mp3");
   });
 
 
-const jumpingBtn = document.getElementById("index-jump");
+/*const jumpingBtn = document.getElementById("index-jump");
 
 setInterval(() => {
   jumpingBtn.classList.toggle("jumping");
-}, 5000);
+}, 5000);*/
 
     /*let timeoutId;
 		function handleMouseMove(event) {
@@ -203,6 +204,26 @@ setInterval(() => {
 		window.onload = function() {
 			timeoutId = setTimeout(redirectToNewPage, 10000); // Wait for 10 secs of inactivity
 		}; */
+
+
+                const buttons = document.querySelectorAll('.button-30');
+        const intervalTime = 5000; // time in milliseconds between button jumps
+
+        function addJumpingClass(button) {
+        button.classList.add('jump-bttns');
+        setTimeout(() => {
+            button.classList.remove('jump-bttns');
+            setTimeout(() => addJumpingClass(button), getRandomTime());
+        }, 500);
+        }
+
+        function getRandomTime() {
+        return Math.floor(Math.random() * intervalTime) + intervalTime;
+        }
+
+        buttons.forEach(button => {
+        setTimeout(() => addJumpingClass(button), getRandomTime());
+        });
 	</script>
 
 <body>
